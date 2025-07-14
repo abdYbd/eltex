@@ -1,0 +1,20 @@
+cd ~
+touch "${USER}_part3.log"
+mkdir -p D1/D2/D3
+touch D1/D2/file.txt
+echo "Hello,world!" > D1/D2/file.txt
+ln D1/D2/file.txt D1/D2/D3/hard_link.txt
+ln -s ../D2/file.txt D1/D2/D3/sym_link.txt
+ls -i D1/D2/file.txt D1/D2/D3/hard_link.txt
+ls -l D1/D2/D3/sym_link.txt
+mv D1/D2/file.txt D1/
+cat D1/D2/D3/hard_link.txt
+cat D1/D2/D3/sym_link.txt
+rm -rf D1/D2
+sudo find / -type f -size +20M 2>/dev/null > large_files.tmp
+while IFS= read -r file; do if [ $(du -m "$file" | cut -f1) -gt 20 ]; then echo "$file"; fi; done < large_files.tmp > "${USER}_part3_gt50M.log"
+rm large_files.tmp
+find ~ -type f -mtime -1
+which find
+file $(which find)
+file /boot/initrd.img*

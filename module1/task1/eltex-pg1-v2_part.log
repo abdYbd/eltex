@@ -1,0 +1,15 @@
+touch eltex-pg1-v2_part.log
+compgen -v HIST
+echo $HISTNAME
+ls .*
+export HISTTIMEFORMAT='%F %T' 
+date 
+~/.bash_history
+PROMT_COMMAND='history -a'
+DATE=$(date +%Y-%m-%d)
+TIME=$(date +%H:%M:%S)
+DATE_TIME= $DATE $TIME
+ls /bin /sbin | grep '[0-9]' 
+PS1='\u@\h-23:59> ' 
+echo PS1=\u@\h-$(date +%H:%M)>  >> ~/.bashrc
+mkdir -p ~/2025-{01..12}
